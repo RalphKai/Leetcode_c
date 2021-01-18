@@ -1,5 +1,5 @@
 /* Bruce method
-   cannot pass! too slow.
+   haven't pass yet! too slow.
 */
 
 int maxArea(int* height, int heightSize){
