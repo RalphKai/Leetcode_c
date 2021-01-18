@@ -1,20 +1,17 @@
-/* Bruce method
-   haven't pass yet! too slow.
-*/
-
 int maxArea(int* height, int heightSize){
-    int index, rIndex;
+    int index = 0, rIndex = heightSize - 1;
     int maxVol = 0;
-    for (index=0; index<heightSize-1; index++){
-        int dif;
-        //int maxDif = 0;
-        for (rIndex = heightSize-1; rIndex>index; rIndex--){
-            dif = height[index] - height[rIndex];
-            //maxDif = maxDif < diff? diff:maxDif;
-            int vol;
-            vol = dif>=0?height[rIndex] * (rIndex - index):height[index] * (rIndex - index);
-            maxVol = maxVol<vol? vol:maxVol;
+    while (index < rIndex){
+        int wall = height[index] > height[rIndex]?height[rIndex]:height[index];
+        int vol = wall * (rIndex - index);
+        maxVol = maxVol >= vol ? maxVol:vol;
+        if (height[index] >= height[rIndex]){
+            rIndex--;
         }
+        else{
+            index++;
+        }
+        
     }
     return maxVol;
 }
